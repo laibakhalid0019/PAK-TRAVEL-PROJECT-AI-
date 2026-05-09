@@ -29,7 +29,7 @@ warnings.filterwarnings("ignore")
 # ─────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="PakTravel AI System",
-    page_icon="🚌",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -607,19 +607,19 @@ def make_network_fig(graph, path=None):
 with st.sidebar:
     st.markdown("""
     <div style='text-align:center; padding:16px 0 24px;'>
-      <div style='font-size:2.6rem;'>🚌</div>
+      <div style='font-size:2.6rem;'></div>
       <div style='font-size:1.1rem; font-weight:800; color:#e8f0fe; letter-spacing:-0.3px;'>PakTravel AI</div>
       <div style='font-size:0.72rem; color:#546e7a; margin-top:4px; letter-spacing:1px; text-transform:uppercase;'>Intelligent Travel System</div>
     </div>
     """, unsafe_allow_html=True)
 
     NAV_ITEMS = [
-        ("🏠", "Home",            "Dashboard overview"),
-        ("🗺️", "Route Finder",    "Search algorithms"),
-        ("⚖️", "Legal Advisor",   "Propositional logic"),
-        ("📅", "Bus Scheduler",   "CSP solver"),
-        ("🧠", "Delay Predictor", "ANN prediction"),
-        ("👥", "Traveller Types", "K-Means clustering"),
+        ("", "Home",            "Dashboard overview"),
+        ("", "Route Finder",    "Search algorithms"),
+        ("", "Legal Advisor",   "Propositional logic"),
+        ("", "Bus Scheduler",   "CSP solver"),
+        ("", "Delay Predictor", "ANN prediction"),
+        ("", "Traveller Types", "K-Means clustering"),
     ]
 
     if "page" not in st.session_state:
@@ -650,7 +650,7 @@ page = st.session_state.page
 if page == "Home":
     st.markdown("""
     <div class='hero-banner fade-in'>
-      <div class='hero-title'>🚌 PakTravel AI System</div>
+      <div class='hero-title'> PakTravel AI System</div>
       <div class='hero-sub'>Pakistan's Intelligent Road Travel Assistant &nbsp;·&nbsp; AL2002 Artificial Intelligence</div>
       <div style='margin-top:14px; font-size:0.82rem; color:#546e7a;'>
         FAST NUCES Chiniot-Faisalabad &nbsp;·&nbsp; Spring 2026
@@ -658,15 +658,15 @@ if page == "Home":
     </div>""", unsafe_allow_html=True)
 
     # Story cards
-    st.markdown("<div class='section-heading'>📖 Ali's Journey — 5 AI Stages</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-heading'> Ali's Journey — 5 AI Stages</div>", unsafe_allow_html=True)
 
     cols = st.columns(5)
     stages = [
-        ("🗺️","Part 1","Route Finder","Search Algorithms\nUCS · A* · Bidirectional","#448aff"),
-        ("⚖️","Part 2","Legal Advisor","Propositional Logic\nModus Ponens · Resolution","#b388ff"),
-        ("📅","Part 3","Bus Scheduler","CSP Solver\nBacktracking · MRV · AC3","#ffab40"),
-        ("🧠","Part 4","Delay Predictor","Neural Network\nsklearn & NumPy ANN","#00e676"),
-        ("👥","Part 5","Traveller Types","K-Means Clustering\nBusiness · Family · Commuter","#ff5252"),
+        ("","Part 1","Route Finder","Search Algorithms\nUCS · A* · Bidirectional","#448aff"),
+        ("","Part 2","Legal Advisor","Propositional Logic\nModus Ponens · Resolution","#b388ff"),
+        ("","Part 3","Bus Scheduler","CSP Solver\nBacktracking · MRV · AC3","#ffab40"),
+        ("","Part 4","Delay Predictor","Neural Network\nsklearn & NumPy ANN","#00e676"),
+        ("","Part 5","Traveller Types","K-Means Clustering\nBusiness · Family · Commuter","#ff5252"),
     ]
     for col, (icon, part, title, desc, color) in zip(cols, stages):
         with col:
@@ -679,7 +679,7 @@ if page == "Home":
             </div>""", unsafe_allow_html=True)
 
     # Stats row
-    st.markdown("<div class='section-heading'>📊 System Metrics</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-heading'> System Metrics</div>", unsafe_allow_html=True)
     m1,m2,m3,m4,m5,m6 = st.columns(6)
     metrics = [
         ("15","Cities","#448aff"),("19","Roads","#00e676"),("15","Traffic Laws","#b388ff"),
@@ -694,14 +694,14 @@ if page == "Home":
             </div>""", unsafe_allow_html=True)
 
     # Map
-    st.markdown("<div class='section-heading'>🗺️ Pakistan Road Network</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-heading'> Pakistan Road Network</div>", unsafe_allow_html=True)
     graph = get_graph()
     fig = make_network_fig(graph)
     st.plotly_chart(fig, use_container_width=True, config={"displayModeBar":False})
 
     st.markdown("""
     <div class='info-box'>
-    💡 <b>How to use:</b> Navigate using the sidebar. Each tab is a fully interactive AI module.
+     <b>How to use:</b> Navigate using the sidebar. Each tab is a fully interactive AI module.
     All algorithms run in real-time with animated feedback.
     </div>""", unsafe_allow_html=True)
 
@@ -709,7 +709,7 @@ if page == "Home":
 # ══ PAGE: ROUTE FINDER ══
 # ─────────────────────────────────────────────────────────────
 elif page == "Route Finder":
-    st.markdown("<div class='hero-title' style='font-size:1.8rem;'>🗺️ Route Finder</div>", unsafe_allow_html=True)
+    st.markdown("<div class='hero-title' style='font-size:1.8rem;'> Route Finder</div>", unsafe_allow_html=True)
     st.markdown("<div style='color:#78909c;margin-bottom:24px;'>Find the shortest road route between any two Pakistani cities using Search Algorithms.</div>", unsafe_allow_html=True)
 
     graph = get_graph()
@@ -717,17 +717,17 @@ elif page == "Route Finder":
     col_l, col_r = st.columns([1, 2])
     with col_l:
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        src  = st.selectbox("🏙️ From", CITIES, index=0)
-        dst  = st.selectbox("🏁 To",   CITIES, index=5)
-        algo = st.selectbox("⚡ Algorithm", ["A* Search","Uniform Cost Search","Bidirectional","All (Compare)"])
-        mode = st.radio("🔄 Route Type", ["Direct", "Relay (change bus)"], horizontal=True)
-        run  = st.button("🚀 Find Route", use_container_width=True)
+        src  = st.selectbox(" From", CITIES, index=0)
+        dst  = st.selectbox(" To",   CITIES, index=5)
+        algo = st.selectbox(" Algorithm", ["A* Search","Uniform Cost Search","Bidirectional","All (Compare)"])
+        mode = st.radio(" Route Type", ["Direct", "Relay (change bus)"], horizontal=True)
+        run  = st.button(" Find Route", use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
     with col_r:
         if run:
             if src == dst:
-                st.markdown("<div class='warn-box'>⚠️ Source and destination must be different.</div>", unsafe_allow_html=True)
+                st.markdown("<div class='warn-box'> Source and destination must be different.</div>", unsafe_allow_html=True)
             else:
                 with st.spinner("Computing route…"):
                     time.sleep(0.4)  # micro-delay for animation feel
@@ -768,7 +768,7 @@ elif page == "Route Finder":
                         st.markdown(f"""
                         <div class='glass-card fade-in' style='border-color:{c}44;'>
                           <div style='font-size:0.8rem;color:{c};font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;'>{alg}</div>
-                          <div class='path-display'>📍 {" → ".join(r["path"])}</div>
+                          <div class='path-display'> {" → ".join(r["path"])}</div>
                           <div class='stat-grid' style='margin-top:14px;'>
                             <div class='stat-card'><div class='stat-value' style='color:{c};font-size:1.4rem;'>{r["cost"]}</div><div class='stat-label'>km</div></div>
                             <div class='stat-card'><div class='stat-value' style='color:{c};font-size:1.4rem;'>{len(r["path"])-2}</div><div class='stat-label'>stops</div></div>
@@ -781,10 +781,10 @@ elif page == "Route Finder":
                     ri = relay_info
                     st.markdown(f"""
                     <div class='glass-card fade-in' style='border-color:#b388ff44;'>
-                      <div style='font-size:0.8rem;color:#b388ff;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;'>🔄 Relay Route via {ri["city"]}</div>
-                      <div class='path-display'>🚌 Bus 1: {" → ".join(ri["leg1"])}  [{ri["d1"]} km]</div>
+                      <div style='font-size:0.8rem;color:#b388ff;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;'> Relay Route via {ri["city"]}</div>
+                      <div class='path-display'> Bus 1: {" → ".join(ri["leg1"])}  [{ri["d1"]} km]</div>
                       <div style='height:6px;'></div>
-                      <div class='path-display'>🚌 Bus 2: {" → ".join(ri["leg2"])}  [{ri["d2"]} km]</div>
+                      <div class='path-display'> Bus 2: {" → ".join(ri["leg2"])}  [{ri["d2"]} km]</div>
                       <div style='margin-top:12px;font-size:0.88rem;color:#b388ff;'>Total relay distance: <b>{ri["total"]} km</b></div>
                     </div>""", unsafe_allow_html=True)
 
@@ -796,19 +796,19 @@ elif page == "Route Finder":
                     fig2=go.Figure(go.Bar(x=algos,y=nodes,marker_color=colors,
                         text=nodes,textposition="outside",
                         marker_line_color="#060d1f",marker_line_width=1.5))
-                    fig2.update_layout(title="Nodes Explored per Algorithm",
-                        height=280,**PLOTLY_DARK,showlegend=False)
+                    fig2.update_layout(PLOTLY_DARK, title="Nodes Explored per Algorithm",
+                        height=280,showlegend=False)
                     st.plotly_chart(fig2,use_container_width=True,config={"displayModeBar":False})
         else:
             st.plotly_chart(make_network_fig(graph), use_container_width=True,
                             config={"displayModeBar":False})
-            st.markdown("<div class='info-box'>👈 Select cities and algorithm, then click <b>Find Route</b>.</div>", unsafe_allow_html=True)
+            st.markdown("<div class='info-box'> Select cities and algorithm, then click <b>Find Route</b>.</div>", unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────────────────────
 # ══ PAGE: LEGAL ADVISOR ══
 # ─────────────────────────────────────────────────────────────
 elif page == "Legal Advisor":
-    st.markdown("<div class='hero-title' style='font-size:1.8rem;'>⚖️ AI Legal Advisor</div>", unsafe_allow_html=True)
+    st.markdown("<div class='hero-title' style='font-size:1.8rem;'> AI Legal Advisor</div>", unsafe_allow_html=True)
     st.markdown("<div style='color:#78909c;margin-bottom:24px;'>Propositional logic KB with pl_resolution — instantly determine traffic violations & fines.</div>", unsafe_allow_html=True)
 
     col_l, col_r = st.columns([1, 1.6])
@@ -826,19 +826,19 @@ elif page == "Legal Advisor":
 
     with col_l:
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        st.markdown("<div class='section-heading'>🚦 Driver Facts</div>", unsafe_allow_html=True)
-        speeding   = st.checkbox("🚗 Speeding (Speed Above Limit)",  value=True)
-        mobile     = st.checkbox("📱 Mobile While Driving",          value=True)
-        not_paid   = st.checkbox("💳 Unpaid Previous Challans",      value=True)
-        three_viol = st.checkbox("⚠️ 3+ Violations This Month",      value=True)
-        repeat_off = st.checkbox("🔁 Repeat Offender",               value=True)
-        still_driv = st.checkbox("🛑 Still Driving After Warning",   value=True)
+        st.markdown("<div class='section-heading'> Driver Facts</div>", unsafe_allow_html=True)
+        speeding   = st.checkbox(" Speeding (Speed Above Limit)",  value=True)
+        mobile     = st.checkbox(" Mobile While Driving",          value=True)
+        not_paid   = st.checkbox(" Unpaid Previous Challans",      value=True)
+        three_viol = st.checkbox(" 3+ Violations This Month",      value=True)
+        repeat_off = st.checkbox(" Repeat Offender",               value=True)
+        still_driv = st.checkbox(" Still Driving After Warning",   value=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-        run_legal = st.button("⚖️ Run AI Legal Advisor", use_container_width=True)
+        run_legal = st.button(" Run AI Legal Advisor", use_container_width=True)
 
         st.markdown("<div class='glass-card' style='margin-top:16px;'>", unsafe_allow_html=True)
-        st.markdown("<div class='section-heading'>📜 15 Traffic Laws</div>", unsafe_allow_html=True)
+        st.markdown("<div class='section-heading'> 15 Traffic Laws</div>", unsafe_allow_html=True)
         for rule_id, cond, cons in LAWS:
             st.markdown(f"<div style='font-size:0.78rem;padding:5px 0;border-bottom:1px solid #1e3a5f;'><span style='color:#448aff;font-weight:700;'>{rule_id}</span>&nbsp;&nbsp;<span style='color:#90a4ae;'>{cond}</span>&nbsp;<span style='color:#546e7a;'>→</span>&nbsp;<span style='color:#e8f0fe;'>{cons}</span></div>", unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
@@ -868,7 +868,7 @@ elif page == "Legal Advisor":
             if jail: fines.append(("Repeat Offender Surcharge (R15)",10000))
             total=sum(f[1] for f in fines)
 
-            st.markdown("<div class='section-heading'>🔍 Inferred Consequences</div>", unsafe_allow_html=True)
+            st.markdown("<div class='section-heading'> Inferred Consequences</div>", unsafe_allow_html=True)
             results_items=[
                 ("Challan Issued",challan,"R3 — Modus Ponens"),
                 ("License Suspended",suspended,"R4+R12 — Resolution"),
@@ -878,7 +878,7 @@ elif page == "Legal Advisor":
             ]
             for label,val,rule in results_items:
                 badge_cls = "badge-red" if val else "badge-green"
-                txt = "YES ⚠️" if val else "NO ✅"
+                txt = "YES " if val else "NO "
                 st.markdown(f"""
                 <div class='timeline-step'>
                   <div class='timeline-label'>{rule}</div>
@@ -889,19 +889,19 @@ elif page == "Legal Advisor":
                 </div>""", unsafe_allow_html=True)
 
             # Fines breakdown
-            st.markdown("<div class='section-heading' style='margin-top:20px;'>💰 Fine Breakdown</div>", unsafe_allow_html=True)
+            st.markdown("<div class='section-heading' style='margin-top:20px;'> Fine Breakdown</div>", unsafe_allow_html=True)
             if fines:
                 fig_f=go.Figure(go.Bar(
                     x=[f[0] for f in fines], y=[f[1] for f in fines],
                     marker_color=["#ff5252","#ffab40","#448aff","#b388ff"][:len(fines)],
                     text=[f"Rs.{f[1]:,}" for f in fines],
                     textposition="outside",marker_line_color="#060d1f",marker_line_width=1.5))
-                fig_f.update_layout(height=260,**PLOTLY_DARK,showlegend=False,
+                fig_f.update_layout(PLOTLY_DARK, height=260,showlegend=False,
                     title=f"Total Fines: Rs.{total:,}")
                 st.plotly_chart(fig_f,use_container_width=True,config={"displayModeBar":False})
 
             # Inference chain
-            st.markdown("<div class='section-heading'>🔗 Hypothetical Syllogism Chain</div>", unsafe_allow_html=True)
+            st.markdown("<div class='section-heading'> Hypothetical Syllogism Chain</div>", unsafe_allow_html=True)
             chain=[
                 ("Speeding","Speed_Above_Limit → Challan_Issued","Challan Issued",challan),
                 ("Challan + Unpaid","(Challan ∧ Not_Paid) → License_Suspended","Suspended",suspended),
@@ -910,7 +910,7 @@ elif page == "Legal Advisor":
             ]
             for step_name,rule_str,conclusion,fired in chain:
                 color="#ff5252" if fired else "#37474f"
-                icon="🔴" if fired else "⚫"
+                icon="" if fired else ""
                 st.markdown(f"""
                 <div style='display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);
                      border-radius:10px;border:1px solid {color}44;margin-bottom:8px;'>
@@ -923,38 +923,38 @@ elif page == "Legal Advisor":
 
             if arrested:
                 st.markdown(f"""<div class='warn-box' style='margin-top:16px;font-size:1rem;font-weight:600;'>
-                ⚠️ Driver is <b>ARRESTED</b>. Total fines: <b>Rs. {total:,}</b>. Jail term: {'YES' if jail else 'NO'}.
+                 Driver is <b>ARRESTED</b>. Total fines: <b>Rs. {total:,}</b>. Jail term: {'YES' if jail else 'NO'}.
                 </div>""", unsafe_allow_html=True)
             else:
                 st.markdown(f"""<div class='success-box' style='margin-top:16px;font-size:1rem;font-weight:600;'>
-                ✅ Driver is NOT arrested. Total fines: <b>Rs. {total:,}</b>.
+                 Driver is NOT arrested. Total fines: <b>Rs. {total:,}</b>.
                 </div>""", unsafe_allow_html=True)
         else:
-            st.markdown("<div class='info-box'>👈 Set driver facts and click <b>Run AI Legal Advisor</b>.</div>", unsafe_allow_html=True)
+            st.markdown("<div class='info-box'> Set driver facts and click <b>Run AI Legal Advisor</b>.</div>", unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────────────────────
 # ══ PAGE: BUS SCHEDULER ══
 # ─────────────────────────────────────────────────────────────
 elif page == "Bus Scheduler":
-    st.markdown("<div class='hero-title' style='font-size:1.8rem;'>📅 CSP Bus Scheduler</div>", unsafe_allow_html=True)
+    st.markdown("<div class='hero-title' style='font-size:1.8rem;'> CSP Bus Scheduler</div>", unsafe_allow_html=True)
     st.markdown("<div style='color:#78909c;margin-bottom:24px;'>Constraint Satisfaction Problem — assigns buses to routes conflict-free, guaranteeing Ali's relay bus.</div>", unsafe_allow_html=True)
 
     col_l, col_r = st.columns([1, 1.8])
 
     with col_l:
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        st.markdown("<div class='section-heading'>⚙️ Solver Settings</div>", unsafe_allow_html=True)
+        st.markdown("<div class='section-heading'> Solver Settings</div>", unsafe_allow_html=True)
         use_ac3 = st.toggle("Enable AC3 Arc Consistency", value=True)
         show_domains = st.toggle("Show Domain Sizes", value=True)
-        run_csp = st.button("🚌 Schedule Buses", use_container_width=True)
+        run_csp = st.button(" Schedule Buses", use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        st.markdown("<div class='section-heading'>📋 Route Info</div>", unsafe_allow_html=True)
+        st.markdown("<div class='section-heading'> Route Info</div>", unsafe_allow_html=True)
         for r,info in ROUTE_INFO.items():
             is_ali = r=="R3"
             color = "#ffab40" if is_ali else "#448aff"
-            hw = "🛣️" if info["highway"] else "🛤️"
+            hw = "" if info["highway"] else ""
             st.markdown(f"""
             <div style='padding:7px 0;border-bottom:1px solid #1e3a5f;display:flex;align-items:center;gap:8px;'>
               <span style='color:{color};font-weight:700;font-size:0.85rem;'>{r}</span>
@@ -996,7 +996,7 @@ elif page == "Bus Scheduler":
 
             # Domain before/after AC3
             if show_domains:
-                st.markdown("<div class='section-heading' style='margin-top:18px;'>🔬 AC3 Domain Reduction</div>", unsafe_allow_html=True)
+                st.markdown("<div class='section-heading' style='margin-top:18px;'> AC3 Domain Reduction</div>", unsafe_allow_html=True)
                 dom_rows=[]
                 for r in ROUTES:
                     before=len(DOMAINS_BASE[r])
@@ -1010,7 +1010,7 @@ elif page == "Bus Scheduler":
 
             # Final schedule
             if final_sol:
-                st.markdown("<div class='section-heading' style='margin-top:18px;'>✅ Optimal Bus Schedule</div>", unsafe_allow_html=True)
+                st.markdown("<div class='section-heading' style='margin-top:18px;'> Optimal Bus Schedule</div>", unsafe_allow_html=True)
                 rows=[]
                 for r in ROUTES:
                     bus=final_sol[r]; info=ROUTE_INFO[r]
@@ -1018,14 +1018,14 @@ elif page == "Bus Scheduler":
                     sc1="+2 ✓" if (is_hw and is_large) else ""
                     rows.append({"Route":r,"Journey":info["name"],"Time":info["time"],
                         "Bus Assigned":bus,"Highway":("Yes" if is_hw else "No"),
-                        "SC1 Score":sc1,"Ali's Bus":("🎓 YES!" if is_ali else "")})
+                        "SC1 Score":sc1,"Ali's Bus":(" YES!" if is_ali else "")})
                 df_sched=pd.DataFrame(rows)
                 st.dataframe(df_sched,use_container_width=True,hide_index=True)
 
                 ali_bus=final_sol["R3"]
                 st.markdown(f"""
                 <div class='success-box' style='font-size:1.05rem;font-weight:700;margin-top:16px;'>
-                🎓 Ali's connecting bus: <b>{ali_bus}</b> on Route R3 (Sukkur → Multan) at 12pm ✓<br>
+                 Ali's connecting bus: <b>{ali_bus}</b> on Route R3 (Sukkur → Multan) at 12pm ✓<br>
                 <span style='font-weight:400;font-size:0.88rem;'>Hard constraint HC2 guarantees R3 is always assigned. Ali will not miss his bus!</span>
                 </div>""", unsafe_allow_html=True)
 
@@ -1044,24 +1044,24 @@ elif page == "Bus Scheduler":
                         text=f"{bus}<br>{info['time']}", textposition="inside",
                         hovertemplate=f"<b>{r}</b>: {info['name']}<br>Bus: {bus}<br>Time: {info['time']}<extra></extra>",
                     ))
-                fig_g.update_layout(
+                fig_g.update_layout(PLOTLY_DARK,
                     barmode="overlay",height=340,
                     title="Bus Schedule Gantt Chart",
                     xaxis=dict(tickvals=[0,2,4,6,8,10],
                         ticktext=["8am","10am","12pm","2pm","4pm","6pm"],
                         title="Time of Day"),
                     yaxis=dict(title="Route",categoryorder="array",categoryarray=ROUTES[::-1]),
-                    showlegend=False, **PLOTLY_DARK
+                    showlegend=False
                 )
                 st.plotly_chart(fig_g,use_container_width=True,config={"displayModeBar":False})
         else:
-            st.markdown("<div class='info-box'>👈 Click <b>Schedule Buses</b> to run the CSP solver.</div>", unsafe_allow_html=True)
+            st.markdown("<div class='info-box'> Click <b>Schedule Buses</b> to run the CSP solver.</div>", unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────────────────────
 # ══ PAGE: DELAY PREDICTOR ══
 # ─────────────────────────────────────────────────────────────
 elif page == "Delay Predictor":
-    st.markdown("<div class='hero-title' style='font-size:1.8rem;'>🧠 Delay Predictor</div>", unsafe_allow_html=True)
+    st.markdown("<div class='hero-title' style='font-size:1.8rem;'> Delay Predictor</div>", unsafe_allow_html=True)
     st.markdown("<div style='color:#78909c;margin-bottom:24px;'>Artificial Neural Network (sklearn MLP) — predicts ON TIME or DELAYED for any journey.</div>", unsafe_allow_html=True)
 
     with st.spinner("Loading ANN model…"):
@@ -1071,22 +1071,22 @@ elif page == "Delay Predictor":
 
     with col_l:
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        st.markdown("<div class='section-heading'>🎛️ Journey Parameters</div>", unsafe_allow_html=True)
-        dist   = st.slider("📏 Distance (km)",         80,  700, 320, step=10)
-        weather= st.slider("🌦️ Weather Score (1=clear, 5=storm)", 1, 5, 2)
-        traffic= st.slider("🚦 Traffic Score (1=light, 5=heavy)", 1, 5, 2)
-        road   = st.slider("🛣️ Road Quality (1=poor, 5=motorway)", 1, 5, 4)
-        age    = st.slider("🚌 Bus Age (years)",         1,  15, 3)
-        predict_btn = st.button("🔮 Predict", use_container_width=True)
+        st.markdown("<div class='section-heading'> Journey Parameters</div>", unsafe_allow_html=True)
+        dist   = st.slider(" Distance (km)",         80,  700, 320, step=10)
+        weather= st.slider(" Weather Score (1=clear, 5=storm)", 1, 5, 2)
+        traffic= st.slider(" Traffic Score (1=light, 5=heavy)", 1, 5, 2)
+        road   = st.slider(" Road Quality (1=poor, 5=motorway)", 1, 5, 4)
+        age    = st.slider(" Bus Age (years)",         1,  15, 3)
+        predict_btn = st.button(" Predict", use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
         # Quick presets
         st.markdown("<div class='glass-card'>", unsafe_allow_html=True)
-        st.markdown("<div class='section-heading'>⚡ Quick Presets</div>", unsafe_allow_html=True)
+        st.markdown("<div class='section-heading'> Quick Presets</div>", unsafe_allow_html=True)
         presets=[
-            ("🎓 Ali's Bus",320,2,2,4,3),
-            ("⛈️ Storm Route",650,5,4,2,12),
-            ("🌅 Ideal Journey",160,1,1,5,2),
+            (" Ali's Bus",320,2,2,4,3),
+            (" Storm Route",650,5,4,2,12),
+            (" Ideal Journey",160,1,1,5,2),
         ]
         for label,d,w,t,r,a in presets:
             if st.button(label,key=f"preset_{label}",use_container_width=True):
@@ -1109,14 +1109,14 @@ elif page == "Delay Predictor":
             if is_delayed:
                 st.markdown(f"""
                 <div class='glass-card fade-in' style='text-align:center;border-color:#ff525266;'>
-                  <div style='font-size:3rem;'>⚠️</div>
+                  <div style='font-size:3rem;'></div>
                   <div style='font-size:2rem;font-weight:900;color:#ff5252;'>DELAYED</div>
                   <div style='font-size:1rem;color:#78909c;margin-top:6px;'>Confidence: {conf:.1f}%</div>
                 </div>""", unsafe_allow_html=True)
             else:
                 st.markdown(f"""
                 <div class='glass-card fade-in' style='text-align:center;border-color:#00e67666;'>
-                  <div style='font-size:3rem;'>✅</div>
+                  <div style='font-size:3rem;'></div>
                   <div style='font-size:2rem;font-weight:900;color:#00e676;'>ON TIME</div>
                   <div style='font-size:1rem;color:#78909c;margin-top:6px;'>Confidence: {conf:.1f}%</div>
                 </div>""", unsafe_allow_html=True)
@@ -1153,26 +1153,26 @@ elif page == "Delay Predictor":
                     orientation="h",marker_color=clr,
                     text=f"{norm_val*100:.0f}%",textposition="outside",
                     marker_line_width=0))
-            fig_f.update_layout(height=220,barmode="overlay",showlegend=False,
-                title="Feature Intensity (normalised)",**PLOTLY_DARK,
-                xaxis=dict(range=[0,1.15],tickformat=".0%",**PLOTLY_DARK["xaxis"]))
+            fig_f.update_layout(PLOTLY_DARK, height=220,barmode="overlay",showlegend=False,
+                title="Feature Intensity (normalised)",
+                xaxis=dict(range=[0,1.15],tickformat=".0%"))
             st.plotly_chart(fig_f,use_container_width=True,config={"displayModeBar":False})
 
             # Delay rule explanation
             rule_fired=(weather>=4) or (traffic>=4) or (dist>400 and road<=2)
             if rule_fired:
                 reasons=[]
-                if weather>=4: reasons.append(f"Weather={weather}/5 ≥ 4 🌩️")
-                if traffic>=4: reasons.append(f"Traffic={traffic}/5 ≥ 4 🚦")
-                if dist>400 and road<=2: reasons.append(f"Distance={dist}km>400 & Road={road}/5≤2 🛤️")
-                st.markdown(f"<div class='warn-box'>🔴 Delay rule triggered: {' | '.join(reasons)}</div>",
+                if weather>=4: reasons.append(f"Weather={weather}/5 ≥ 4 ")
+                if traffic>=4: reasons.append(f"Traffic={traffic}/5 ≥ 4 ")
+                if dist>400 and road<=2: reasons.append(f"Distance={dist}km>400 & Road={road}/5≤2 ")
+                st.markdown(f"<div class='warn-box'> Delay rule triggered: {' | '.join(reasons)}</div>",
                             unsafe_allow_html=True)
             else:
-                st.markdown("<div class='success-box'>🟢 No delay conditions triggered — journey conditions are favourable.</div>",
+                st.markdown("<div class='success-box'> No delay conditions triggered — journey conditions are favourable.</div>",
                             unsafe_allow_html=True)
 
         # Model metrics (always shown)
-        st.markdown("<div class='section-heading' style='margin-top:20px;'>📊 Model Performance</div>", unsafe_allow_html=True)
+        st.markdown("<div class='section-heading' style='margin-top:20px;'> Model Performance</div>", unsafe_allow_html=True)
         m1,m2,m3,m4=st.columns(4)
         m1.metric("Accuracy",  f"{metrics['acc']*100:.1f}%")
         m2.metric("Precision", f"{metrics['prec']*100:.1f}%")
@@ -1187,9 +1187,9 @@ elif page == "Delay Predictor":
             text=[[str(v) for v in row] for row in cm.tolist()],
             texttemplate="%{text}",textfont=dict(size=20,color="white")
         ))
-        fig_cm.update_layout(height=240,title="Confusion Matrix",**PLOTLY_DARK,
-            xaxis=dict(title="Predicted",**PLOTLY_DARK["xaxis"]),
-            yaxis=dict(title="Actual",**PLOTLY_DARK["yaxis"]))
+        fig_cm.update_layout(PLOTLY_DARK, height=240,title="Confusion Matrix",
+            xaxis=dict(title="Predicted"),
+            yaxis=dict(title="Actual"))
         st.plotly_chart(fig_cm,use_container_width=True,config={"displayModeBar":False})
 
         # Training loss
@@ -1197,16 +1197,16 @@ elif page == "Delay Predictor":
             y=metrics["loss"],mode="lines",line=dict(color="#448aff",width=2),
             fill="tozeroy",fillcolor="rgba(68,138,255,0.08)"
         ))
-        fig_loss.update_layout(height=200,title="Training Loss Curve",**PLOTLY_DARK,
-            xaxis=dict(title="Epoch",**PLOTLY_DARK["xaxis"]),
-            yaxis=dict(title="Loss",**PLOTLY_DARK["yaxis"]))
+        fig_loss.update_layout(PLOTLY_DARK, height=200,title="Training Loss Curve",
+            xaxis=dict(title="Epoch"),
+            yaxis=dict(title="Loss"))
         st.plotly_chart(fig_loss,use_container_width=True,config={"displayModeBar":False})
 
 # ─────────────────────────────────────────────────────────────
 # ══ PAGE: TRAVELLER TYPES ══
 # ─────────────────────────────────────────────────────────────
 elif page == "Traveller Types":
-    st.markdown("<div class='hero-title' style='font-size:1.8rem;'>👥 Traveller Types</div>", unsafe_allow_html=True)
+    st.markdown("<div class='hero-title' style='font-size:1.8rem;'> Traveller Types</div>", unsafe_allow_html=True)
     st.markdown("<div style='color:#78909c;margin-bottom:24px;'>K-Means Clustering (k=3) — groups 400 PakTravel customers into Business, Family, and Commuter profiles.</div>", unsafe_allow_html=True)
 
     with st.spinner("Running K-Means clustering…"):
@@ -1218,7 +1218,7 @@ elif page == "Traveller Types":
     for col,profile in zip([c1,c2,c3],["Business","Family","Commuter"]):
         cnt=(df5["Profile"]==profile).sum()
         color=profile_colors[profile]
-        icons={"Business":"💼","Family":"👨‍👩‍👧","Commuter":"🚶"}
+        icons={"Business":"","Family":"","Commuter":""}
         with col:
             st.markdown(f"""
             <div class='glass-card' style='text-align:center;border-color:{color}44;'>
@@ -1240,7 +1240,7 @@ elif page == "Traveller Types":
                     "Avg_Journey_Distance":"Average Journey Distance (km)"},
             title="Traveller Clusters — Trips vs Distance")
         fig_sc.update_traces(marker=dict(size=7,opacity=0.8,line=dict(width=0)))
-        fig_sc.update_layout(height=400,**PLOTLY_DARK,
+        fig_sc.update_layout(PLOTLY_DARK, height=400,
             legend=dict(bgcolor="rgba(13,27,62,0.8)",bordercolor="#1e3a5f"))
         st.plotly_chart(fig_sc,use_container_width=True,config={"displayModeBar":False})
 
@@ -1249,7 +1249,7 @@ elif page == "Traveller Types":
             color="Profile", color_discrete_map=profile_colors,
             title="Booking Lead Time vs Loyalty Points")
         fig_lb.update_traces(marker=dict(size=6,opacity=0.75,line=dict(width=0)))
-        fig_lb.update_layout(height=350,**PLOTLY_DARK,showlegend=False)
+        fig_lb.update_layout(PLOTLY_DARK, height=350,showlegend=False)
         st.plotly_chart(fig_lb,use_container_width=True,config={"displayModeBar":False})
 
     with col_r:
@@ -1261,10 +1261,9 @@ elif page == "Traveller Types":
             fill="tozeroy",fillcolor="rgba(68,138,255,0.08)"))
         fig_elbow.add_vline(x=3,line_dash="dash",line_color="#ff5252",
             annotation_text="k=3 optimal",annotation_font_color="#ff5252")
-        fig_elbow.update_layout(height=280,title="Elbow Method",
-            xaxis=dict(title="k (clusters)",tickvals=list(range(1,9)),**PLOTLY_DARK["xaxis"]),
-            yaxis=dict(title="Inertia",**PLOTLY_DARK["yaxis"]),
-            **PLOTLY_DARK)
+        fig_elbow.update_layout(PLOTLY_DARK, height=280,title="Elbow Method",
+            xaxis=dict(title="k (clusters)",tickvals=list(range(1,9))),
+            yaxis=dict(title="Inertia"))
         st.plotly_chart(fig_elbow,use_container_width=True,config={"displayModeBar":False})
 
         # Radar chart — cluster profiles
@@ -1281,6 +1280,11 @@ elif page == "Traveller Types":
             ]
             radar_data[profile]=vals
 
+        def hex_to_rgba(hex_color, alpha=0.12):
+            hex_color = hex_color.lstrip("#")
+            r, g, b = int(hex_color[0:2], 16), int(hex_color[2:4], 16), int(hex_color[4:6], 16)
+            return f"rgba({r},{g},{b},{alpha})"
+
         fig_radar=go.Figure()
         for profile,vals in radar_data.items():
             v=vals+[vals[0]]
@@ -1288,7 +1292,7 @@ elif page == "Traveller Types":
             fig_radar.add_trace(go.Scatterpolar(
                 r=v, theta=cats+[cats[0]],
                 name=profile, fill="toself",
-                fillcolor=c.replace("#","rgba(")+",0.12)" if False else f"{c}1e",
+                fillcolor=hex_to_rgba(c, 0.12),
                 line=dict(color=c,width=2),
                 marker=dict(size=5,color=c),
             ))
@@ -1306,14 +1310,14 @@ elif page == "Traveller Types":
         st.plotly_chart(fig_radar,use_container_width=True,config={"displayModeBar":False})
 
         # Profile table
-        st.markdown("<div class='section-heading'>📋 Cluster Averages</div>", unsafe_allow_html=True)
+        st.markdown("<div class='section-heading'> Cluster Averages</div>", unsafe_allow_html=True)
         profile_stats=df5.groupby("Profile")[
             ["Trips_Per_Month","Avg_Journey_Distance","Avg_Booking_Days","Loyalty_Points"]
         ].mean().round(1)
         st.dataframe(profile_stats,use_container_width=True)
 
     # Histograms
-    st.markdown("<div class='section-heading' style='margin-top:8px;'>📊 Feature Distributions by Profile</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-heading' style='margin-top:8px;'> Feature Distributions by Profile</div>", unsafe_allow_html=True)
     feat_cols=["Trips_Per_Month","Avg_Journey_Distance","Loyalty_Points"]
     fig_hist=make_subplots(rows=1,cols=3,subplot_titles=feat_cols)
     for ci,feat in enumerate(feat_cols,1):
@@ -1324,12 +1328,12 @@ elif page == "Traveller Types":
                 marker_color=color,opacity=0.7,
                 showlegend=(ci==1),nbinsx=18,
             ),row=1,col=ci)
-    fig_hist.update_layout(height=280,barmode="overlay",**PLOTLY_DARK,
+    fig_hist.update_layout(PLOTLY_DARK, height=280,barmode="overlay",
         legend=dict(bgcolor="rgba(13,27,62,0.8)",bordercolor="#1e3a5f",font=dict(color="#e8f0fe")))
     st.plotly_chart(fig_hist,use_container_width=True,config={"displayModeBar":False})
 
     st.markdown("""
     <div class='success-box'>
-    🎓 <b>Ali's Profile:</b> As a student making an occasional long-distance trip, Ali falls in the <b>Family</b> cluster.
+     <b>Ali's Profile:</b> As a student making an occasional long-distance trip, Ali falls in the <b>Family</b> cluster.
     PakTravel can offer him a <b>student/occasional traveller discount package</b>!
     </div>""", unsafe_allow_html=True)
